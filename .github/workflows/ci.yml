@@ -51,13 +51,3 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup ko
-        if: github.event_name == 'push' && ${{ steps.release.outputs.TAG_NAME }} != ''
-        uses: imjasonh/setup-ko@v0.4
-        with:
-          version: v0.8.0
-
-      - name: Publish
-        if: github.event_name == 'push'
-        run: ko publish . -t ${{ steps.release.outputs.TAG_NAME }} --bare
