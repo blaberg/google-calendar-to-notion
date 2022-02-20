@@ -15,7 +15,7 @@ GOOGLECALENDAR_APISECRET | To be able to use Google's APIs you have to create an
 GOOGLECALENDAR_OAUTH2 | When a user gives the application permission to access its calendar a token will be created. The application stores that token as a secret in the secrets manager. set this variable to whatever that secret should be called.
 NOTION_APISECRET | The application need access to you Notion. It gets this by being registered as an integration. Read more about Notion integrations [here][notion-integration]. The API-key for the integration should be stored as a secret in the GCP Secrets Manager. Set this variable as the full resource ID.
 CALENDARSETTINGS_TIMEZONE | Your desired timezone as specified by [Carbon][carbon].
-CALENDARSETTINGS_CALENDARS | An array of the calendars you want to import.
+CALENDARSETTINGS_CALENDARS | An list of the calendars you want to import. The calendar should be separated by a ":". ex: email1@email.com:email2@email.com.
 NOTIONSETTINGS_DBLINK | The full link to the database you want to import the events into. It does not need to be set up in any way. 
 
 ## To-Do

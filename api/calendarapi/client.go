@@ -5,6 +5,7 @@ import (
 	"github.com/golang-module/carbon"
 	"go.uber.org/zap"
 	"google.golang.org/api/calendar/v3"
+	"strings"
 )
 
 type Client struct {
@@ -15,7 +16,7 @@ type Client struct {
 
 type Config struct {
 	TimeZone  string
-	Calendars []string
+	Calendars string
 }
 
 func (c *Client) ListEvents() (events []*calendar.Event, err error) {
@@ -26,7 +27,8 @@ func (c *Client) ListEvents() (events []*calendar.Event, err error) {
 	}()
 	morning := carbon.SetTimezone(c.Config.TimeZone).Now().StartOfDay().ToRfc3339String()
 	night := carbon.SetTimezone(c.Config.TimeZone).Now().EndOfDay().ToRfc3339String()
-	for _, cal := range c.Config.Calendars {
+	cals := strings.Split(c.Config.Calendars, ":")
+	for _, cal := range cals {
 		ev, err := c.CalendarClient.Events.List(cal).TimeMin(morning).TimeMax(night).Do()
 		if err != nil {
 			return nil, err
