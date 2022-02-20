@@ -37,6 +37,13 @@ func (c *Client) EnsureDatabase(ctx context.Context) (string, error) {
 			delete(DB.Properties, s)
 			continue
 		}
+		confs["Time"] = notionapi.FormulaPropertyConfig{
+			Type: notionapi.PropertyConfigTypeFormula,
+			Formula: notionapi.FormulaConfig{
+				Expression: "concat(formatDate(prop(\"Start\"),\"HH:mm\"),\" - \",formatDate(prop(\"End\"),\"HH:mm\"))",
+			},
+		}
+		delete(DB.Properties, "Time")
 		confs["Id"] = notionapi.RichTextPropertyConfig{
 			Type: notionapi.PropertyConfigTypeRichText,
 		}
