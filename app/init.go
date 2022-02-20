@@ -111,7 +111,6 @@ func getToken(
 	if err != nil {
 		return nil, fmt.Errorf("convert auth code to access token: %w", err)
 	}
-	logger.Info("token", zap.Any("Token", tok))
 	return tok, nil
 }
 
