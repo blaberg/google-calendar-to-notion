@@ -18,6 +18,13 @@ CALENDARSETTINGS_TIMEZONE | Your desired timezone as specified by [Carbon][carbo
 CALENDARSETTINGS_CALENDARS | An array of the calendars you want to import.
 NOTIONSETTINGS_DBLINK | The full link to the database you want to import the events into. It does not need to be set up in any way. 
 
+## To-Do
+- [ ] Add update capabilities
+- [ ] Add emoji to events that have a page
+- [ ] Update page styling
+- [ ] Update page description parsing
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
